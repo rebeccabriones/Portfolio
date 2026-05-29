@@ -69,6 +69,58 @@ body{
 
 }
 
+/* DROPDOWN */
+.dropdown-toggle{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+}
+
+.dropdown-toggle i{
+  transition:0.3s ease;
+}
+
+.dropdown-content{
+  max-height:0;
+  overflow:hidden;
+
+  transition:
+    max-height 0.5s ease,
+    opacity 0.4s ease;
+
+  opacity:0;
+}
+
+.dropdown-content.open{
+  max-height:1200px;
+  opacity:1;
+}
+
+.dropdown-toggle.active i{
+  transform:rotate(180deg);
+}
+
+/* PERSONAL INFO */
+.info p{
+  margin-bottom:12px;
+  line-height:1.8;
+}
+
+#personal .card{
+  margin-bottom:20px;
+}
+
+#personal ul{
+  padding-left:20px;
+  margin-top:10px;
+}
+
+#personal li{
+  margin-bottom:10px;
+  line-height:1.7;
+}
+
 #game-section{
   display:flex;
   justify-content:center;
@@ -997,16 +1049,67 @@ body.exp-focus #internships .card:not(.active-card) {
 </div>
 </section>
 
-<!-- PERSONAL INFORMATION BUTTON -->
-<section id="personal-btn-section">
+<!-- PERSONAL INFORMATION -->
+<section id="personal">
 
-  <div class="resume-container">
+<h2 class="dropdown-toggle">
+  Personal Information
+  <i class="fa-solid fa-chevron-down"></i>
+</h2>
 
-    <a href="personal-info.html" class="resume-btn">
-      Personal Information
-    </a>
+<div class="med-divider"></div>
 
+<div class="dropdown-content">
+
+  <!-- BASIC INFO -->
+  <div class="card">
+    <h3>Basic Information</h3>
+
+    <div class="info">
+      <p><strong>Age:</strong> 22</p>
+      <p><strong>Date of Birth:</strong> June 03, 2003</p>
+      <p><strong>Place of Birth:</strong> Sta. Maria, Bulacan</p>
+    </div>
   </div>
+
+  <!-- EDUCATION -->
+  <div class="card">
+    <h3>Education</h3>
+
+    <ul>
+      <li>
+        <strong>Bachelor of Science in Psychology</strong><br>
+        Riverside College, Inc. — Class of 2026
+      </li>
+
+      <li>
+        <strong>MCA Montessori School</strong><br>
+        Senior High School — Class of 2022
+      </li>
+
+      <li>
+        <strong>Signal Village National High School</strong><br>
+        Class of 2020
+      </li>
+
+      <li>
+        <strong>Eustaquio Lopez Elementary School</strong><br>
+        Class of 2016
+      </li>
+    </ul>
+  </div>
+
+  <!-- ACHIEVEMENTS -->
+  <div class="card">
+    <h3>Achievements</h3>
+
+    <ul>
+      <li>Academic Award 2023–2024</li>
+      <li>Academic Award 2024–2025</li>
+    </ul>
+  </div>
+
+</div>
 
 </section>
 
@@ -1380,6 +1483,16 @@ function createParticle(){
 }
 
 setInterval(createParticle, 120);
+
+const dropdownToggle = document.querySelector(".dropdown-toggle");
+const dropdownContent = document.querySelector(".dropdown-content");
+
+dropdownToggle.addEventListener("click", () => {
+
+  dropdownContent.classList.toggle("open");
+  dropdownToggle.classList.toggle("active");
+
+});
 
 </script>
 
